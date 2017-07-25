@@ -2,7 +2,7 @@
 
 ## Installation
 
-Download from https://github.com/tkuchiki/awslb-log-viewer
+Download from https://github.com/tkuchiki/awslb-log-viewer/releases
 
 ## Usage
 
