@@ -16,7 +16,7 @@ import (
 var (
 	file           = kingpin.Flag("file", "logfile").Short('f').String()
 	lbType         = kingpin.Flag("lb-type", "ALB or ELB").Short('t').Default("ALB").String()
-	reALB          = regexp.MustCompile(`(.+) (.+) (.+) (.+) (.+) (.+) (.+) (.+) (.+) (.+) (.+) (.+) "(.+)" "(.+)" (.+) (.+) (.+) "(.+)" "(.+)" "(.+)" (.+) (.+) "(.+)" "(.+)" "(.+)"`)
+	reALB          = regexp.MustCompile(`(.+) (.+) (.+) (.+) (.+) (.+) (.+) (.+) (.+) (.+) (.+) (.+) "(.+)" "(.+)" (.+) (.+) (.+) "(.+)" "(.+)" "(.+)" (.+) (.+) "(.+)" "(.+)" "(.+)" "(.+)" "(.+)"`)
 	reRequest      = regexp.MustCompile(`(.+) (.+) (.+)`)
 	reELB          = regexp.MustCompile(`(.+) (.+) (.+) (.+) (.+) (.+) (.+) (.+) (.+) (.+) (.+) "(.+)" "(.+)" (.+) (.+)`)
 	invalidDataErr = errors.New("Invalid data")
@@ -50,8 +50,8 @@ func toJson(rawdata string, lbType string) (string, error) {
 			return "", err
 		}
 
-		line = fmt.Sprintf(`{"type": "%s", "timestamp": "%s", "elb": "%s", "client": "%s", "target": "%s", "request_processing_time": "%s", "target_processing_time": "%s", "response_processing_time": "%s", "elb_status_code": "%s", "target_status_code": "%s", "received_bytes": "%s", "sent_bytes": "%s", "method": "%s", "http_version": "%s", "protocol": "%s", "host": "%s", "port": "%s", "uri": "%s", "user_agent": "%s", "ssl_cipher": "%s", "ssl_protocol": "%s", "target_group_arn": "%s", "trace_id": "%s", "domain_name": "%s", "chosen_cert_arn": "%s", "matched_rule_priority": "%s", "request_creation_time": "%s", "actions_executed": "%s", "redirect_url": "%s", "error_reason": "%s"}`,
-			data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8], data[9], data[10], data[11], data[12], method, version, protocol, host, port, uri, data[14], data[15], data[16], data[17], data[18], data[19], data[20], data[21], data[22], data[23], data[24], data[25],
+		line = fmt.Sprintf(`{"type": "%s", "timestamp": "%s", "elb": "%s", "client": "%s", "target": "%s", "request_processing_time": "%s", "target_processing_time": "%s", "response_processing_time": "%s", "elb_status_code": "%s", "target_status_code": "%s", "received_bytes": "%s", "sent_bytes": "%s", "method": "%s", "http_version": "%s", "protocol": "%s", "host": "%s", "port": "%s", "uri": "%s", "user_agent": "%s", "ssl_cipher": "%s", "ssl_protocol": "%s", "target_group_arn": "%s", "trace_id": "%s", "domain_name": "%s", "chosen_cert_arn": "%s", "matched_rule_priority": "%s", "request_creation_time": "%s", "actions_executed": "%s", "redirect_url": "%s", "error_reason": "%s", "target:port_list": "%s", "target_status_code_list": "%s"}`,
+			data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8], data[9], data[10], data[11], data[12], method, version, protocol, host, port, uri, data[14], data[15], data[16], data[17], data[18], data[19], data[20], data[21], data[22], data[23], data[24], data[25], data[26], data[27],
 		)
 	case "ELB":
 		data := reELB.FindStringSubmatch(rawdata)
