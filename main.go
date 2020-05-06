@@ -71,7 +71,7 @@ func toJson(rawdata string, lbType string) (string, error) {
 }
 
 func main() {
-	kingpin.Version("0.1.1")
+	kingpin.Version("0.1.2")
 	kingpin.Parse()
 
 	var f *os.File
