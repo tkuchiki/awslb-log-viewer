@@ -53,7 +53,9 @@ $ cat examples/alb.log | ./awslb-log-viewer | jq .
   "request_creation_time": "2019-01-21T07:32:28.468000Z",
   "actions_executed": "forward",
   "redirect_url": "-",
-  "error_reason": "-"
+  "error_reason": "-",
+  "target:port_list": "172.31.4.107:32796",
+  "target_status_code_list": "502"
 }
 {
   "type": "h2",
@@ -85,7 +87,9 @@ $ cat examples/alb.log | ./awslb-log-viewer | jq .
   "request_creation_time": "2019-01-21T07:32:28.468000Z",
   "actions_executed": "forward",
   "redirect_url": "-",
-  "error_reason": "-"
+  "error_reason": "-",
+  "target:port_list": "172.31.4.108:32797",
+  "target_status_code_list": "200"
 }
 ```
 
